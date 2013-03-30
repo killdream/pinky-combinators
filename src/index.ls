@@ -55,25 +55,37 @@ pipeline = compose . (.reverse!)
 #
 # :: [a | Promise a b] -> Promise [a] b
 all = (values) ->
-  result  = []
-  promise = pinky!
-  len     = values.length
+  | values.length is 0 => return pinky []
+  | otherwise          => do
+                          result  = []
+                          promise = pinky!
+                          len     = values.length
 
-  values.map ((a, i) -> (pinky a).then (fulfill-one i), promise.reject)
-  return promise
+                          values.map (a, i) -> (pinky a).then do
+                            * fulfill-one i
+                            * promise.reject
+
+                          return promise
   
   function fulfill-one(index) => (value) ->
     result[index] = value
     if not --len => promise.fulfill result
+    value
+
 
 #### λ any
 # Returns a promise that is resolved if any is.
 #
 # :: [a | Promise a b] -> Promise a b
 any = (values) ->
-  promise = pinky!
-  values.map (-> (pinky it).then promise.fulfill, promise.reject)
-  return promise
+  | values.length is 0 => pinky void
+  | otherwise          => do
+                          promise = pinky!
+                          values.map -> (pinky it).then do
+                            * promise.fulfill
+                            * promise.reject
+
+                          return promise
 
 
 
