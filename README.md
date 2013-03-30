@@ -1,4 +1,4 @@
-# Pinky Combinators [![Build Status](https://travis-ci.org/killdream/pinky-combinators.png)](https://travis-ci.org/killdream/pinky-combinators) ![Dependencies Status](https://david-dm.org/killdream/pinky.png)
+# Pinky Combinators [![Build Status](https://travis-ci.org/killdream/pinky-combinators.png)](https://travis-ci.org/killdream/pinky-combinators) ![Dependencies Status](https://david-dm.org/killdream/pinky-combinators.png)
 
 Sweet combinators for promises/a+.
 
