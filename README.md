@@ -28,6 +28,10 @@ p.pipeline([ read('user.json')
            , write('data.json') ])
  .otherwise(function(e){ throw e })
 
+// Or function-composition style f . g
+p.compose([ splitLines, read('log.txt') ])
+ .then(function(lines){ ... })
+
 // Parallel computations
 p.all([ read('a.txt'), read('b.txt'), read('c.txt') ])
  .then( function(as)  { console.log(as.join('\n')) }
