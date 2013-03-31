@@ -1,6 +1,6 @@
 {
   "name": "pinky-combinators",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Sweet combinators for promises/a+",
   "main": "./lib/index.js",
   "devDependencies": {
