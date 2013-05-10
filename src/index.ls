@@ -113,4 +113,4 @@ any = (values) ->
 
 
 ### -- Exports ---------------------------------------------------------
-module.exports = { compose, pipeline, all, any }
+module.exports = { sequentially, compose, pipeline, all, any }

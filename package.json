@@ -9,7 +9,10 @@
     "chai-as-promised": "~3.2.5",
     "chai": "~1.5.0",
     "brofist-tap": "~0.1.0",
-    "brofist": "~0.2.2"
+    "brofist": "~0.2.2",
+    "brofist-browser": "~0.1.3",
+    "doom-nwmatcher": "~0.1.0",
+    "doom-bean": "~0.1.0"
   },
   "scripts": {
     "cc": "./node_modules/.bin/lsc -o lib -c src/*.ls",
@@ -37,7 +40,7 @@
     ]
   },
   "testling": {
-    "files": "lib-test/browser.js",
+    "files": "lib-test/tap.js",
     "preprocess": "npm run-script pretest",
     "browsers": [
       "ie/6..latest",
