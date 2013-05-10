@@ -51,6 +51,26 @@ compose = (fns) ->
 pipeline = compose . (.reverse!)
 
 
+#### λ sequentially
+# Runs a series of computations sequentially, and yields a list of the
+# results.
+#
+# :: [() -> a | Promise a b] -> Promise [a] b
+sequentially = (fns) ->
+  | fns.length is 0 => pinky void
+  | otherwise       => do
+                       results = []
+                       initial = fns.shift!
+                       return (fns.reduce chain, initial).then aggregate
+
+  function chain(old, current)
+    old.then current .then -> do
+                              results.push it
+                              it
+                 
+  function aggregate() => results
+
+
 ### -- Promise aggregation / parallelism -------------------------------
 
 #### λ all
