@@ -10,6 +10,7 @@ pinky = require 'pinky'
 ok   = -> void
 fail = -> throw new Error 'failed'
 
+x = -> it.disable!
 
 module.exports = \
 spec 'Pinky combinators' (it, spec) ->
@@ -59,3 +60,12 @@ spec 'Pinky combinators' (it, spec) ->
   spec 'λ any' ->
     it 'Should treat an empty list as fulfilled.' ->
       expect (any []) .to.be.fulfilled
+
+    x it 'Should succeed if any succeeds.' ->
+
+    x it 'Should fail if any fails.' ->
+
+  spec 'λ sequentially' ->
+    x it 'Should run computations sequentially (ltr).' ->
+    x it 'Should return a list of the resolved values.' ->
+    x it 'Should fail if any computation fails.' ->
