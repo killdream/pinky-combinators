@@ -33,21 +33,21 @@ pinky = require 'pinky'
 #### λ compose
 # Like function composition, but for promises.
 #
-# :: [a | Promise a b] -> Promise a b
-compose = (values) ->
-  | values.length is 0 => pinky void
-  | otherwise          => do
-                          promise = pinky values.pop!!
-                          i       = values.length
+# :: [() -> a | Promise a b] -> Promise [a] b
+compose = (fns) ->
+  | fns.length is 0 => pinky void
+  | otherwise       => do
+                       promise = pinky fns.pop!!
+                       i       = fns.length
 
-                          while i-- => promise = promise.then values[i]
-                          return promise
+                       while i-- => promise = promise.then fns[i]
+                       return promise
 
 
 #### λ pipeline
 # Like compose, but from left to right.
 #
-# :: [a | Promise a b] -> Promise [a] b
+# :: [() -> a | Promise a b] -> Promise [a] b
 pipeline = compose . (.reverse!)
 
 
