@@ -1,5 +1,7 @@
 # Pinky Combinators [![Build Status](https://travis-ci.org/killdream/pinky-combinators.png)](https://travis-ci.org/killdream/pinky-combinators) ![Dependencies Status](https://david-dm.org/killdream/pinky-combinators.png)
 
+> **Note:** I'm not maintaining this library anymore, since Promises/A+ are broken for me. I recommend using [monadic promises](https://github.com/folktale/data.future) and [monad combinators](https://github.com/folktale/control.monads) instead.
+
 Sweet combinators for promises/a+.
 
 Even though it uses pinky under the covers, it should be interoperable with any
